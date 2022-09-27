@@ -12,7 +12,7 @@ function getComputerChoice() {
 
 const computerSelection = getComputerChoice();
 console.log(computerSelection);
-const playerSelection = prompt("Rock, Paper, or Scissors?", " ").toLowerCase();
+const playerSelection = prompt("Rock, Paper, or Scissors?", " ", null).toLowerCase();
 console.log(playerSelection);
 
 function firstRound(playerSelection, computerSelection) {
@@ -24,6 +24,8 @@ function firstRound(playerSelection, computerSelection) {
         return "You lose! Rock beats Scissors";
     } else if (playerSelection === computerSelection.toLowerCase()) {
         return "It's a fre*king tie!";
+    } else if (playerSelection == " " || playerSelection == null) {
+        return "Please choose between 'Rock, Paper or Scissors'!";
     } else return "You win!"
 }
 console.log(firstRound(playerSelection, computerSelection));
