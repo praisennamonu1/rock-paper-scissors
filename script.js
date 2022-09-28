@@ -2,30 +2,51 @@ function getComputerChoice() {
     let getComputerChoice = Math.random();
     switch (true) {
         case getComputerChoice < 0.34:
-            return "Rock";
+            return "rock";
         case getComputerChoice <= 0.67:
-            return "Paper";
+            return "paper";
         default:
-            return "Scissors";
+            return "scissors";
     }
 }
 
-const computerSelection = getComputerChoice();
-console.log(computerSelection);
-const playerSelection = prompt("Rock, Paper, or Scissors?", " ", null).toLowerCase();
-console.log(playerSelection);
+function getPlayerChoice() {
+    let choice = prompt("Rock, Paper, or Scissors?", null).toLowerCase();
+    if (choice === "rock" || choice === "paper" || choice === "scissors") {
+        return choice;
+    } else {
+        return "Please Choose between Rock, Paper, or Scissors!"
+    }
+}
 
-function firstRound(playerSelection, computerSelection) {
-    if (playerSelection === "rock" && computerSelection === "Paper") {
+function gameRound() {
+
+    const computerSelection = getComputerChoice();
+
+    console.log(computerSelection);
+
+    const playerSelection = getPlayerChoice();
+
+    console.log(playerSelection);
+
+    if (playerSelection === "rock" && computerSelection === "paper") {
         return "You lose! Paper beats Rock";
-    } else if (playerSelection === "paper" && computerSelection === "Scissors") {
+    } else if (playerSelection === "paper" && computerSelection === "scissors") {
         return "You lose! Scissors beats Paper";
-    } else if (playerSelection === "scissors" && computerSelection === "Rock") {
+    } else if (playerSelection === "scissors" && computerSelection === "rock") {
         return "You lose! Rock beats Scissors";
-    } else if (playerSelection === computerSelection.toLowerCase()) {
+    } else if (playerSelection === computerSelection) {
         return "It's a fre*king tie!";
     } else if (playerSelection == " " || playerSelection == null) {
         return "Please choose between 'Rock, Paper or Scissors'!";
     } else return "You win!"
 }
-console.log(firstRound(playerSelection, computerSelection));
+
+
+function game() {
+    return gameRound();
+}
+
+for (let i = 0; i < 5; i++) {
+    console.log(game());;
+}
